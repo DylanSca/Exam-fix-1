@@ -10,8 +10,6 @@ public class Employee{
     private boolean onLeave;
     private double hourlyWage;
     private double unpaidHours;
-    private double pay;
-    private double hoursWorked;
     public Employee(String fullname, int yearOfBirth, double hourlyWage){
         this.fullname = fullname;
         this.yearOfBirth = yearOfBirth;
@@ -34,7 +32,7 @@ public class Employee{
         //question 12
         int age = calculateAge(2025);
         //age=age-yearOfBirth;
-        if(age>16){
+        if(age>=16){
             System.out.println("Employee can drive");
             return true;
         }
@@ -54,8 +52,8 @@ public class Employee{
         //double hoursWorked;
         //double pay;
         double totalHourlyWage=hourlyWage*hoursWorked;
-        double totalPay=totalHourlyWage+unpaidHours;
-        double netPay=totalPay*0.30;
+        double grossNet=totalHourlyWage+unpaidHours;
+        double netPay= grossNet - (grossNet*0.30);
         return netPay;
     }
 
@@ -66,7 +64,7 @@ public class Employee{
         //question 14
         //calculatePay();
         double netpay = calculatePay(hoursWorked);
-        System.out.println(fullname+" "+"has recived a wire transfer of"+" "+netpay+"CAD");
+        System.out.println(fullname+" "+"has received a wire transfer of"+" "+netpay+"CAD");
         unpaidHours=0.0;
     }
 }
