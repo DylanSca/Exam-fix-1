@@ -10,7 +10,8 @@ public class Employee{
     private boolean onLeave;
     private double hourlyWage;
     private double unpaidHours;
-
+    private double pay;
+    private double hoursWorked;
     public Employee(String fullname, int yearOfBirth, double hourlyWage){
         this.fullname = fullname;
         this.yearOfBirth = yearOfBirth;
@@ -30,13 +31,16 @@ public class Employee{
      * Returns true is an employee is above 16 years old
      */
     public boolean canDrive(){
+        //question 12
         int age = calculateAge(2025);
-        age=age-yearOfBirth;
+        //age=age-yearOfBirth;
         if(age>16){
             System.out.println("Employee can drive");
+            return true;
         }
         else{
             System.out.println("Employee cannot drive");
+            return false;
         }
         }
     
@@ -45,21 +49,24 @@ public class Employee{
      * Returns the net pay for the outstanding unpaid hours
      */
     private double calculatePay(double hoursWorked){
-        double totalHourlyWage;
-        double hoursWorked;
-        double pay;
-        totalHourlyWage=hourlyWage*hoursWorked
-        totalHourlyWage=totalHourlyWage+unpaidHours
-        pay=totalHourlyWage*0.30
-        return pay;
+        //question 13
+        //double totalHourlyWage;
+        //double hoursWorked;
+        //double pay;
+        double totalHourlyWage=hourlyWage*hoursWorked;
+        double totalPay=totalHourlyWage+unpaidHours;
+        double netPay=totalPay*0.30;
+        return netPay;
     }
 
     /*
      * Output the payment record and resets unpaid hours
      */
-    public void paySalary(){
-        calculatePay();
-        System.out.println(fullName+" "+"has recived a wire transfer of"+" "+pay+"CAD");
+    public void paySalary(double hoursWorked){
+        //question 14
+        //calculatePay();
+        double netpay = calculatePay(hoursWorked);
+        System.out.println(fullname+" "+"has recived a wire transfer of"+" "+netpay+"CAD");
         unpaidHours=0.0;
     }
 }
